@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body{
+    background-image:url(wp3.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+#container{
+    background-color:lightgrey;
+    margin: auto;
+    text-align:center;
+    max-width: 500px;
+    border-radius: 5px;
+
+
+}
+
+#heading{
+    text-align: center;
+    text-shadow: 2px 2px 5px red;
+    color:gold;
+}
+#form{
+
+    margin-top: 2em;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 2px;
+    font-size: 1.2em;
+
+
+
+
+}
+input[type=text],select{
+    font-size: 0.9em;
+}
+input[type=number]{
+    font-size: 0.9em;
+}
+input[type=tel]{
+    font-size: 0.9em;
+}
+#submit{
+    font-size: 1em;
+    color:white;
+    background-color:black ;
+    padding: 2px;
+    width: 100%;
+
+}
+input{
+    width: 90%;
+}
+</style>
+
+<title>Donor Registration Form</title>
+</head>
+<body>
+<h1 id="heading">Donor Registration Form</h1>
+<div id="container">
+<form id="form" name="form" method="post" action="connect.php">
+    <p style="margin-top: 0; color:red">*All Details are compulsory*</p>
+    First Name:<br><input autocomplete="off" type="text" name="fname" id="fname"><br><br>
+    Last Name:<br><input type="text" name="lname"><br><br>
+    Email:<br><input type="text" name="email" ><br><br>
+    Age:<br><input id="age" type="number" name="age" min="18" max="100" required><br><br>
+    Phone No:<br><input name="phone" type="int"><br><br>
+    <label for="bloodgroup">Blood Group:</label><br>
+    <select id="bloodgroup" name="bloodgroup">
+        <option value="A+">A+</option>
+        <option value="B+">B+</option>
+        <option value="AB+">AB+</option>
+        <option value="A-">A-</option>
+        <option value="B-">B-</option>
+        <option value="AB-">AB-</option>
+        <option value="O-">O-</option>
+        <option value="O+">O+</option>
+    </select><br><br>        
+    <input type="submit" value="submit" onclick="return checkform()" id="submit" >
+    
+    
+</form>
+</div>
+<script>
+    function checkform(){
+        var a=document.forms["form"]["fname"].value;
+        var b=document.forms["form"]["lname"].value;
+        var c=document.forms["form"]["email"].value;
+        //var d=c.indexOf("@");
+        var e=document.forms['form']['phone'].value;
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    
+        if((a=="")||(b=="")||(c=="")||(e=="")){
+            alert("All Details must be filled!!");
+            return false;
+        }
+       // if(d<=0){
+         //   alert("Invalid Email");
+           // return false;
+        //}
+    
+        if(reg.test(c) == false){
+            alert("Invalid Email ID!!");
+            return false;
+        }
+        if((e.length!=10)){
+            alert(" Phone no must be 10 digit!!");
+            return false;
+        }
+        if(isNaN(e)){
+            alert("PhoneNo cannot have characters");
+            return false;
+        }
+        
+        
+    }
+</script>
+</body>    
+</html>
